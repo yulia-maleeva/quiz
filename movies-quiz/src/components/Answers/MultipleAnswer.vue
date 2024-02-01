@@ -29,7 +29,7 @@ export default {
       chosenOption: null,
       clicked: false,
       selectedOption: null,
-      delay: 6000,
+      delay: 1000,
     };
   },
   methods: {

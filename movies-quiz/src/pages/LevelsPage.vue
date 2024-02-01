@@ -33,16 +33,30 @@
       />
     </RouterLink>
   </div>
+
+  <ModalWindow v-if="activeQuestionsDoNotExist" />
 </template>
 
 <script>
 import { RouterLink } from "vue-router";
+import ModalWindow from "../components/ModalWindow.vue";
 
 export default {
   components: {
     RouterLink,
+    ModalWindow,
+  },
+  data() {
+    return {
+      isModalWindowOpened: true,
+    };
   },
   computed: {
+    activeQuestionsDoNotExist() {
+      return this.$store.state.levels.every((level) =>
+        level.questions.every((question) => question.disabled === true)
+      );
+    },
     levels() {
       return this.$store.state.levels;
     },
